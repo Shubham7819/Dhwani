@@ -1,11 +1,11 @@
 package com.example.android.dhwani;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static com.example.android.dhwani.MainActivity.songs;
 
@@ -15,23 +15,6 @@ public class NowPlayingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_now_playing);
-
-        ImageView library = findViewById(R.id.library_image_view);
-        library.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NowPlayingActivity.this,MainActivity.class);
-            }
-        });
-
-        ImageView favourites = findViewById(R.id.favourites_image_view);
-        favourites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NowPlayingActivity.this, FavouriteActivity.class);
-                startActivity(intent);
-            }
-        });
 
         ImageView songThumbIV = findViewById(R.id.thumb);
         int songThumbID = getIntent().getIntExtra("songThumb", 0);
@@ -49,12 +32,14 @@ public class NowPlayingActivity extends AppCompatActivity {
         makeFavouriteIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (songFavourite) {
+                if (songs.get(songPosition).isSongFavourite()) {
                     songs.get(songPosition).setSongUnFavourite();
                     makeFavouriteIV.setImageResource(R.drawable.heart_empty);
+                    Toast.makeText(NowPlayingActivity.this, "Song removed from Favourites", Toast.LENGTH_SHORT).show();
                 } else {
                     songs.get(songPosition).setSongFavourite();
                     makeFavouriteIV.setImageResource(R.drawable.heart_filled);
+                    Toast.makeText(NowPlayingActivity.this, "Song added to Favourites", Toast.LENGTH_SHORT).show();
                 }
             }
         });

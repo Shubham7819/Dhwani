@@ -4,32 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="8dp"
+    android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
     tools:context=".NowPlayingActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:id="@+id/library_image_view"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            android:src="@drawable/library" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:id="@+id/favourites_image_view"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            android:src="@drawable/favorites"/>
-
-    </LinearLayout>
 
     <ImageView
         android:layout_width="match_parent"
@@ -47,6 +25,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:padding="10dp"
             android:layout_gravity="center_vertical"
             android:id="@+id/makeFavouriteIV"/>
 
@@ -59,14 +38,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="bottom"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 android:id="@+id/song_name"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
                 android:id="@+id/artist_name"/>
 
         </LinearLayout>
