@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="bottom"
                 android:id="@+id/song_name"/>
 
             <TextView
@@ -92,6 +92,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
+            android:id="@+id/btnPrevious"
             android:padding="8dp"
             android:src="@drawable/previous"/>
 
@@ -99,6 +100,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
+            android:id="@+id/btnPlay"
             android:padding="8dp"
             android:src="@drawable/play"/>
 
@@ -106,6 +108,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
+            android:id="@+id/btnNext"
             android:padding="8dp"
             android:src="@drawable/next"/>
 

@@ -27,6 +27,14 @@ public class Song {
         return mThumbID;
     }
 
+    public boolean isSongFavourite() {
+        if (mFavourite){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void setSongFavourite(){
         mFavourite = true;
     }
