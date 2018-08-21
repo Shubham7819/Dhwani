@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import static com.example.android.dhwani.MainActivity.songs;
+
 public class NowPlayingActivity extends AppCompatActivity {
 
     @Override
@@ -35,7 +37,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         int songThumbID = getIntent().getIntExtra("songThumb", 0);
         songThumbIV.setImageResource(songThumbID);
 
-        ImageView makeFavouriteIV = findViewById(R.id.makeFavouriteIV);
+        final ImageView makeFavouriteIV = findViewById(R.id.makeFavouriteIV);
         final boolean songFavourite = getIntent().getBooleanExtra("songFavourite", false);
         if (songFavourite) {
             makeFavouriteIV.setImageResource(R.drawable.heart_filled);
@@ -43,11 +45,16 @@ public class NowPlayingActivity extends AppCompatActivity {
             makeFavouriteIV.setImageResource(R.drawable.heart_empty);
         }
 
+        final int songPosition = getIntent().getIntExtra("songPosition", 0);
         makeFavouriteIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (songFavourite) {
-                    
+                    songs.get(songPosition).setSongUnFavourite();
+                    makeFavouriteIV.setImageResource(R.drawable.heart_empty);
+                } else {
+                    songs.get(songPosition).setSongFavourite();
+                    makeFavouriteIV.setImageResource(R.drawable.heart_filled);
                 }
             }
         });

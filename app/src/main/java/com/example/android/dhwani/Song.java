@@ -38,4 +38,8 @@ public class Song {
     public void setSongFavourite(){
         mFavourite = true;
     }
+
+    public void setSongUnFavourite() {
+        mFavourite = false;
+    }
 }

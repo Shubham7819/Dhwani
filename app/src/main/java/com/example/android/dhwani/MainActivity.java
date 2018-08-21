@@ -50,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
                 nowPlayingIntent.putExtra("songName", songs.get(position).getSongName());
                 nowPlayingIntent.putExtra("songArtist", songs.get(position).getArtistName());
                 nowPlayingIntent.putExtra("songThumb", songs.get(position).getThumbID());
-                nowPlayingIntent.putExtra("songFavourite", songs.get(position).isSongFavourite())
+                nowPlayingIntent.putExtra("songFavourite", songs.get(position).isSongFavourite());
+                nowPlayingIntent.putExtra("songPosition", position);
                 startActivity(nowPlayingIntent);
             }
         });
