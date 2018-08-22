@@ -13,6 +13,42 @@ import java.util.ArrayList;
 
 public class SongAdapter extends ArrayAdapter<Song> {
 
+    @NonNull
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        ViewHolder holder;
+
+        // Check if the existing view is being reused, otherwise inflate the view
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(
+                    R.layout.list_item, parent, false);
+            holder = new ViewHolder();
+            holder.songTextView = convertView.findViewById(R.id.song_text_view);
+            holder.artistTextView = convertView.findViewById(R.id.artist_text_view);
+            holder.thumbImageView = convertView.findViewById(R.id.thumbnail_image_view);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        Song currentSong = getItem(position);
+
+        holder.thumbImageView.setImageResource(currentSong.getThumbID());
+
+        // Find the TextView in the list_item.xml layout with the ID song_text_view
+        // set this text on the name TextView
+        holder.songTextView.setText(currentSong.getSongName());
+
+        // Find the TextView in the list_item.xml layout with the ID artist_text_view
+        // set this text on the artistName TextView
+        holder.artistTextView.setText(currentSong.getArtistName());
+
+        // Return the whole list item layout (containing 2 TextViews and an ImageView)
+        // so that it can be shown in the ListView
+        return convertView;
+    }
+
     public SongAdapter(Activity context, ArrayList<Song> songs) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         // the second argument is used when the ArrayAdapter is populating a single TextView.
@@ -21,37 +57,10 @@ public class SongAdapter extends ArrayAdapter<Song> {
         super(context, 0, songs);
     }
 
-    @NonNull
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        // Check if the existing view is being reused, otherwise inflate the view
-        View listItemView = convertView;
-        if(listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.list_item, parent, false);
-        }
-
-        // Get the {@link AndroidFlavor} object located at this position in the list
-        Song currentSong = getItem(position);
-
-        ImageView thumbImageView = listItemView.findViewById(R.id.thumbnail_image_view);
-        thumbImageView.setImageResource(currentSong.getThumbID());
-
-        // Find the TextView in the list_item.xml layout with the ID version_name
-        TextView songTextView = (TextView) listItemView.findViewById(R.id.song_text_view);
-        // Get the version name from the current AndroidFlavor object and
-        // set this text on the name TextView
-        songTextView.setText(currentSong.getSongName());
-
-        // Find the TextView in the list_item.xml layout with the ID version_number
-        TextView artistTextView = (TextView) listItemView.findViewById(R.id.artist_text_view);
-        // Get the version number from the current AndroidFlavor object and
-        // set this text on the number TextView
-        artistTextView.setText(currentSong.getArtistName());
-
-        // Return the whole list item layout (containing 2 TextViews and an ImageView)
-        // so that it can be shown in the ListView
-        return listItemView;
+    static class ViewHolder {
+        private TextView songTextView;
+        private TextView artistTextView;
+        private ImageView thumbImageView;
     }
 
 }

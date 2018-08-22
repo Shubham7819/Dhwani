@@ -3,21 +3,26 @@ package com.example.android.dhwani;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
+// Musical Structure app
+// layout a music playing app that displays the list of available songs in a ListView
 public class MainActivity extends AppCompatActivity {
 
+    // create an ArrayList for storage of songs(object of Song class)
     static ArrayList<Song> songs;
 
+    // creates ListView variable for showing songs in list
     ListView listView;
 
+    // adapter to populate the layout with views
     SongAdapter adapter;
 
     Intent nowPlayingIntent;
@@ -29,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
         doStuff();
 
+        //  find and store object of nowPlayingButton
         Button nowPlayingButton = findViewById(R.id.btnNowPlaying);
+        // open NowPlayingActivity when user click on button
         nowPlayingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new SongAdapter(this, songs);
         listView.setAdapter(adapter);
 
+        // handle click events on listItems and pass extra data to NowPlayingActivity
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -63,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // this method creates objects of Song class
     public void getMusic(){
 
         songs.add(new Song("Masakali", "A.R. Rahman", R.drawable.masakali));
