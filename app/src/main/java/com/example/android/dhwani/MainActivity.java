@@ -1,15 +1,14 @@
 package com.example.android.dhwani;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 
 // Musical Structure app
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
 
     // adapter to populate the layout with views
-    SongAdapter adapter;
+    private SongAdapter adapter;
 
     Intent nowPlayingIntent;
 
@@ -41,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (nowPlayingIntent == null) {
-                    Toast.makeText(MainActivity.this, "no song is playing currently, select a song please", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.now_playing_empty,
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     startActivity(nowPlayingIntent);
                 }
@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doStuff(){
-        songs = new ArrayList<Song>();
-        listView = (ListView) findViewById(R.id.list);
+        songs = new ArrayList<>();
+        listView = findViewById(R.id.list);
         getMusic();
         adapter = new SongAdapter(this, songs);
         listView.setAdapter(adapter);
@@ -60,12 +60,17 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                nowPlayingIntent = new Intent(MainActivity.this, NowPlayingActivity.class);
-                nowPlayingIntent.putExtra("songName", songs.get(position).getSongName());
-                nowPlayingIntent.putExtra("songArtist", songs.get(position).getArtistName());
-                nowPlayingIntent.putExtra("songThumb", songs.get(position).getThumbID());
-                nowPlayingIntent.putExtra("songFavourite", songs.get(position).isSongFavourite());
-                nowPlayingIntent.putExtra("songPosition", position);
+                nowPlayingIntent = new Intent(MainActivity.this,
+                        NowPlayingActivity.class);
+                nowPlayingIntent.putExtra(getString(R.string.song_name),
+                        songs.get(position).getSongName());
+                nowPlayingIntent.putExtra(getString(R.string.song_artist),
+                        songs.get(position).getArtistName());
+                nowPlayingIntent.putExtra(getString(R.string.song_thumb),
+                        songs.get(position).getThumbID());
+                nowPlayingIntent.putExtra(getString(R.string.song_favourite),
+                        songs.get(position).isSongFavourite());
+                nowPlayingIntent.putExtra(getString(R.string.song_position), position);
                 startActivity(nowPlayingIntent);
             }
         });
@@ -74,30 +79,35 @@ public class MainActivity extends AppCompatActivity {
     // this method creates objects of Song class
     public void getMusic(){
 
-        songs.add(new Song("Masakali", "A.R. Rahman", R.drawable.masakali));
-        songs.add(new Song("Dil ka jo haal hai", "Abhijeet & Shreya Ghoshal",
+        songs.add(new Song(getString(R.string.masakali), getString(R.string.ar_rahman),
+                R.drawable.masakali));
+        songs.add(new Song(getString(R.string.dil_ka_jo_haal), getString(R.string.abhijeet_shreya),
                 R.drawable.dil_ka_jo));
-        songs.add(new Song("Waada raha sanam", "Abhijeet",
+        songs.add(new Song(getString(R.string.waada_raha_sanam), getString(R.string.abhijeet),
                 R.drawable.waada_raha));
-        songs.add(new Song("Bhar do jholi meri", "Adnan sami",
+        songs.add(new Song(getString(R.string.bhar_do_jholi), getString(R.string.adnan_sami),
                 R.drawable.bhar_do_jholi));
-        songs.add(new Song("Hip don't lie", "Shakira", R.drawable.hip_dont));
-        songs.add(new Song("Channa mereya", "Pritam & Arijit singh",
+        songs.add(new Song(getString(R.string.hip_dont), getString(R.string.shakira),
+                R.drawable.hip_dont));
+        songs.add(new Song(getString(R.string.channa_mereya), getString(R.string.pritam_arijit),
                 R.drawable.channa_mereya));
-        songs.add(new Song("Bulleya", "Papon", R.drawable.bulleya));
-        songs.add(new Song("Labon ka karobaar", "Papon", R.drawable.labon_ka));
-        songs.add(new Song("Chahun main ya naa", "Palak muchhal",
+        songs.add(new Song(getString(R.string.bulleya), getString(R.string.papon),
+                R.drawable.bulleya));
+        songs.add(new Song(getString(R.string.labon_ka), getString(R.string.papon),
+                R.drawable.labon_ka));
+        songs.add(new Song(getString(R.string.chahun_main_ya), getString(R.string.palak_muchhal),
                 R.drawable.chahun_main));
-        songs.add(new Song("Mere bina", "Nikhil dsouza", R.drawable.mere_bina));
-        songs.add(new Song("Kheech meri photo",
-                "Neeti mohan, Akasa singh & Darshan raval", R.drawable.kheech_meri_photo));
-        songs.add(new Song("Papa toh band bajaye", "Neeraj Sridhar",
+        songs.add(new Song(getString(R.string.mere_bina), getString(R.string.nikhil),
+                R.drawable.mere_bina));
+        songs.add(new Song(getString(R.string.kheech_meri_photo),
+                getString(R.string.neeti_akasa_darshan), R.drawable.kheech_meri_photo));
+        songs.add(new Song(getString(R.string.papa_toh), getString(R.string.neeraj),
                 R.drawable.papa_toh));
-        songs.add(new Song("Sawaar loon", "Monali thakur",
+        songs.add(new Song(getString(R.string.sawaar_loon), getString(R.string.monali),
                 R.drawable.sawaar_loon));
-        songs.add(new Song("Abhi kuch dino se", "Mohit Chauhan",
+        songs.add(new Song(getString(R.string.abhi_kuch), getString(R.string.mohit),
                 R.drawable.abhi_kuch_dino));
-        songs.add(new Song("Daaru Party", "Millind gaba",
+        songs.add(new Song(getString(R.string.daaru_party), getString(R.string.millind),
                 R.drawable.daaru_party));
 
     }

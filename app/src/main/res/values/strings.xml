@@ -1,3 +1,47 @@
 <resources>
     <string name="app_name">Dhwani</string>
+    <string name="now_playing">Now Playing</string>
+
+    <string name="now_playing_empty">No song is playing currently, select a song please</string>
+
+    <string name="song_name">songName</string>
+    <string name="song_artist">songArtist</string>
+    <string name="song_thumb">songThumb</string>
+    <string name="song_favourite">songFavourite</string>
+    <string name="song_position">songPosition</string>
+
+    <string name="masakali">Masakali</string>
+    <string name="dil_ka_jo_haal">Dil ka jo haal hai</string>
+    <string name="waada_raha_sanam">Waada raha sanam</string>
+    <string name="bhar_do_jholi">Bhar do jholi meri</string>
+    <string name="hip_dont">Hip don\'t lie</string>
+    <string name="channa_mereya">Channa mereya</string>
+    <string name="bulleya">Bulleya</string>
+    <string name="labon_ka">Labon ka karobaar</string>
+    <string name="chahun_main_ya">Chahun main ya naa</string>
+    <string name="mere_bina">Mere bina</string>
+    <string name="kheech_meri_photo">Kheech meri photo</string>
+    <string name="papa_toh">Papa toh band bajaye</string>
+    <string name="sawaar_loon">Sawaar loon</string>
+    <string name="abhi_kuch">Abhi kuch dino se</string>
+    <string name="daaru_party">Daaru Party</string>
+
+    <string name="ar_rahman">A.R. Rahman</string>
+    <string name="abhijeet_shreya"><![CDATA[Abhijeet & Shreya Ghoshal]]></string>
+    <string name="abhijeet">Abhijeet</string>
+    <string name="adnan_sami">Adnan sami</string>
+    <string name="shakira">Shakira</string>
+    <string name="pritam_arijit"><![CDATA[Pritam & Arijit singh]]></string>
+    <string name="papon">Papon</string>
+    <string name="palak_muchhal">Palak muchhal</string>
+    <string name="nikhil">Nikhil dsouza</string>
+    <string name="neeti_akasa_darshan"><![CDATA[Neeti mohan, Akasa singh & Darshan raval]]></string>
+    <string name="neeraj">Neeraj Sridhar</string>
+    <string name="monali">Monali thakur</string>
+    <string name="mohit">Mohit Chauhan</string>
+    <string name="millind">Millind gaba</string>
+
+    <string name="favourite_removed">Song removed from Favourites</string>
+    <string name="favourite_added">Song added to Favourites</string>
+
 </resources>

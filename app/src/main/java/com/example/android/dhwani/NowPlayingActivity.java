@@ -20,14 +20,14 @@ public class NowPlayingActivity extends AppCompatActivity {
         // find ImageView for song thumbnail and store in songThumbIV variable
         ImageView songThumbIV = findViewById(R.id.thumb);
         // get image id of selected song and store
-        int songThumbID = getIntent().getIntExtra("songThumb", 0);
+        int songThumbID = getIntent().getIntExtra(getString(R.string.song_thumb), 0);
         // set song image in imageView
         songThumbIV.setImageResource(songThumbID);
 
         // find ImageView for favourite icon and store in variable
         final ImageView makeFavouriteIV = findViewById(R.id.makeFavouriteIV);
         // get value of songFavourite whether song is favourite
-        final boolean songFavourite = getIntent().getBooleanExtra("songFavourite",
+        final boolean songFavourite = getIntent().getBooleanExtra(getString(R.string.song_favourite),
                 false);
         // check if song favourite and set image
         if (songFavourite) {
@@ -38,18 +38,18 @@ public class NowPlayingActivity extends AppCompatActivity {
 
         // get selected song position in ArrayList and store
         // make song favourite if not
-        final int songPosition = getIntent().getIntExtra("songPosition", 0);
+        final int songPosition = getIntent().getIntExtra(getString(R.string.song_position), 0);
         makeFavouriteIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (songs.get(songPosition).isSongFavourite()) {
                     songs.get(songPosition).setSongUnFavourite();
                     makeFavouriteIV.setImageResource(R.drawable.heart_empty);
-                    Toast.makeText(NowPlayingActivity.this, "Song removed from Favourites", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NowPlayingActivity.this, R.string.favourite_removed, Toast.LENGTH_SHORT).show();
                 } else {
                     songs.get(songPosition).setSongFavourite();
                     makeFavouriteIV.setImageResource(R.drawable.heart_filled);
-                    Toast.makeText(NowPlayingActivity.this, "Song added to Favourites", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NowPlayingActivity.this, R.string.favourite_added, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -57,12 +57,12 @@ public class NowPlayingActivity extends AppCompatActivity {
         // find textView for song name
         // get song name from intent and set on textView
         TextView songNameTV = findViewById(R.id.song_name);
-        String songName = getIntent().getStringExtra("songName");
+        String songName = getIntent().getStringExtra(getString(R.string.song_name));
         songNameTV.setText(songName);
 
         // get song Artist name from intent and set on textView
         TextView songArtistTV = findViewById(R.id.artist_name);
-        String songArtist = getIntent().getStringExtra("songArtist");
+        String songArtist = getIntent().getStringExtra(getString(R.string.song_artist));
         songArtistTV.setText(songArtist);
 
         ImageView previousButton = findViewById(R.id.btnPrevious);
